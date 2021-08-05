@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/index'
+  get "/dashboard", to: "dashboard#index"
   get 'dashboard/properties'
   get 'dashboard/reports'
+
   root 'static_pages#home'
 
   get '/blog', to: 'static_pages#blog'
