@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < Application Controller
   def new
   end
 
@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
       render :blog
     end
   end
-
 
   def destroy
     log_out if logged_in?

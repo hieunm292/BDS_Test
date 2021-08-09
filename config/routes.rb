@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :properties
   get "/dashboard", to: "dashboard#index"
   get 'dashboard/properties'
   get 'dashboard/reports'
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :accounts
+  resources :properties, only: [:create,:update, :destroy]
 end
