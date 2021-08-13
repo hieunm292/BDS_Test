@@ -18,13 +18,10 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 
+gem "kaminari"
 gem "figaro"
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
-
-
-gem 'carrierwave', '~> 2.2', '>= 2.2.2'
-gem 'fog', '~> 2.2'
 
 gem 'active_storage_validations', '~> 0.9.5'
 gem 'mini_magick', '~> 4.11'

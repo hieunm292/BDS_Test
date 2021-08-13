@@ -10,7 +10,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @property.price %>
+  <%= number_to_currency @property.price %>
 </p>
 
 <p>
@@ -21,6 +21,13 @@
 <p>
   <strong>Bathrooms:</strong>
   <%= @property.bathrooms %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+
+  <div class="thumb-image"><%= image_tag(@property.photo , class: "img-thub") %></div>
+
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property), class: "btn btn-success" %> |

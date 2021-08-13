@@ -19,6 +19,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = current_account.properties.build(property_params)
+    @property.photo.attach(params[:property][:photo])
     respond_to do |format|
       if @property.save
         format.html { redirect_to @property, notice: "Property was successfully created." }
