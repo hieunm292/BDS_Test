@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   resources :properties
   get "/dashboard", to: "dashboard#index"
-  get 'dashboard/properties'
-  get 'dashboard/reports'
+  # get 'dashboard/properties'
+  # get 'dashboard/reports'
 
   root 'static_pages#home'
 

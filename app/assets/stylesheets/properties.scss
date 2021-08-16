@@ -2,8 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .img-thub{
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
+  //border: 0.5px solid #ddd;
+  //border-radius: 4px;
+  //padding: 5px;
+  width: 100%;
+  height: 250px;
+}
+
+
+.property-thumb{
+  width: 100%;
+  height: 900px;
+}
+.backgrund-image{
+  margin-bottom: 2rem;
+}
+
+.text-success{
+  text-decoration: none;
 }

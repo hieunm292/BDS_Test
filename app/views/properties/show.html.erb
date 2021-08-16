@@ -1,34 +1,63 @@
-<p>
-  <strong>Name:</strong>
-  <%= @property.name %>
-</p>
+<div class="backgrund-image">
+  <%= image_tag(@property.photo , class: "property-thumb") %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-6 ">
+          <p class="h4 mb-0"><%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Rent" %></p>
+          <p class="mb-2"><%= @property.address %></p>
+        </div>
+        <div class="col-md-6 mt-3 text-center">
+          <div class="row mr-md-3 bg-light p-3">
+            <div class="col-4">
+              <p class="m-0"><strong>Rooms</strong></p>
+              <i class="fas fa-bed text-muted m-0"></i><br />
+              <span class="lead"><%= @property.rooms %></span>
+            </div>
+            <div class="col-4">
+              <p class="m-0"><strong>Bathrooms</strong></p>
+              <span class="lead"><%= @property.bathrooms %></span>
+            </div>
+            <div class="col-4">
+              <p class="m-0"><strong>Parking</strong></p>
+              <span class="lead"><%= @property.parking_spaces %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row border-top border-bottom mt-5 pt-5 pb-4">
+          <div class="col-6">
+            <strong><%=link_to "Est. Monthly Repayment of #{number_to_currency((@property.price/ 360), precision: 0)}", "#", class: "h4 text-success" %></strong>
+          </div>
+          <div class="col-6 text-right">
+            <strong><%= link_to "Can i affrord this property ?", "#", class: "text-success h4"%> </strong>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col pt-4">
+          <p class="h2">Property Description</p>
+          <p><%= @property.name %></p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @property.address %>
-</p>
+          <%= simple_format @property.details%>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency @property.price %>
-</p>
-
-<p>
-  <strong>Rooms:</strong>
-  <%= @property.rooms %>
-</p>
-
-<p>
-  <strong>Bathrooms:</strong>
-  <%= @property.bathrooms %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-
-  <div class="thumb-image"><%= image_tag(@property.photo , class: "img-thub") %></div>
-
-</p>
-
-<%= link_to 'Edit', edit_property_path(@property), class: "btn btn-success" %> |
-<%= link_to 'Back', properties_path, class: "btn btn-secondary" %>
+          <%= link_to 'Back', request.referer, class: "btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col -4">
+      <%= render "properties/agent_details"%>
+    </div>
+  </div>
+  <section class="mt-5 mb-5">
+    <div class="container" bis_skin_checked="1">
+      <div class="row" bis_skin_checked="1">
+        <div class="col-12">
+          <p class="h3 mb-3">Other properties by this agent</p>
+        </div>
+        <%= render "properties/lastest_properties", properties: @agent_properties %>
+      </div>
+    </div>
+  </section>
+</div>

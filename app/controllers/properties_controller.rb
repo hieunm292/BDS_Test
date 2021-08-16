@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only: [:create, :destroy]
+  before_action :set_sidebar, except: [:show]
 
 
   def index
@@ -8,6 +9,8 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @agent = @property.account
+    @agent_properties = Property.where(account_id: @agent.id).where.not(id: @property.id)
   end
 
   def new
@@ -56,7 +59,11 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
+  def set_sidebar
+    @show_sidebar = true
+  end
+
   def property_params
-    params.require(:property).permit(:name, :address, :price, :rooms, :bathrooms, :photo)
+    params.require(:property).permit(:name, :address, :price, :rooms, :bathrooms, :details, :parking_spaces, :photo)
   end
 end

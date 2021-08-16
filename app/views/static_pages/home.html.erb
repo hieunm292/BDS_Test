@@ -2,7 +2,7 @@
 
 <main>
 
-    <section class="py-5 text-center container">
+    <section class="py-5 text-center container-fluid ">
     <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Album example</h1>
@@ -14,6 +14,16 @@
     </div>
     </div>
     </section>
+
+    <section id="lastest-properties" class=" mb-5 ">
+      <div class="container marketing">
+        <div class="row">
+          <%= render "properties/lastest_properties", properties: @properties%>
+        </div>
+      </div>
+    </section>
+
+
 
   <div class="container marketing">
 
