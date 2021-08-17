@@ -6,30 +6,42 @@
     <div class="col-sm-8">
       <div class="row">
         <div class="col-sm-6 ">
-          <p class="h4 mb-0"><%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Rent" %></p>
+          <p class="h4 mb-0"><%= @property.for_sale? ? "For Sale" : "For Rent" %></p>
           <p class="mb-2"><%= @property.address %></p>
+          <p class="h4 mb-0">
+            <% if @property.for_sale? %>
+              <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "Sale Sale" %>
+            <% else %>
+              <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Rent" %> / monthXX
+            <%end%>
+
+
+          </p>
         </div>
         <div class="col-md-6 mt-3 text-center">
           <div class="row mr-md-3 bg-light p-3">
             <div class="col-4">
-              <p class="m-0"><strong>Rooms</strong></p>
               <i class="fas fa-bed text-muted m-0"></i><br />
-              <span class="lead"><%= @property.rooms %></span>
+              <small><%= @property.rooms %> Rooms</small>
             </div>
             <div class="col-4">
-              <p class="m-0"><strong>Bathrooms</strong></p>
-              <span class="lead"><%= @property.bathrooms %></span>
+              <i class="fas fa-bath text-muted ml-1"></i><br />
+              <small><%= @property.bathrooms %> Bathrooms</small>
             </div>
             <div class="col-4">
-              <p class="m-0"><strong>Parking</strong></p>
-              <span class="lead"><%= @property.parking_spaces %></span>
+              <i class="fas fa-car"></i><br />
+              <small><%= @property.parking_spaces %> Parking</small>
             </div>
           </div>
         </div>
       </div>
       <div class="row border-top border-bottom mt-5 pt-5 pb-4">
           <div class="col-6">
+          <% if @property.for_sale? %>
             <strong><%=link_to "Est. Monthly Repayment of #{number_to_currency((@property.price/ 360), precision: 0)}", "#", class: "h4 text-success" %></strong>
+          <% else %>
+            <b class="text-success">Available from  <%= @property.available_date %> </b>
+          <%end%>
           </div>
           <div class="col-6 text-right">
             <strong><%= link_to "Can i affrord this property ?", "#", class: "text-success h4"%> </strong>
@@ -48,6 +60,7 @@
     </div>
     <div class="col -4">
       <%= render "properties/agent_details"%>
+      <iframe class="ml-lg-6 mt-3 " width="320" height="240" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB1as2uf4ut2rf6f4-Xz57i2J80fJsOTrs&q=<%= @property.address.to_param %>" allowfullscreen></iframe>
     </div>
   </div>
   <section class="mt-5 mb-5">
@@ -61,3 +74,4 @@
     </div>
   </section>
 </div>
+

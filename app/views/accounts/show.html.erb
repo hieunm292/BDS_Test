@@ -7,5 +7,15 @@
         <%= @account.url %>,<%= @account.created_at %>, <%= @account.updated_at %>
       </h1>
     </section>
+    <section class="mt-5 mb-5">
+      <div class="container" bis_skin_checked="1">
+        <div class="row" bis_skin_checked="1">
+          <div class="col-12">
+            <p class="h3 mb-3">Other properties by this agent</p>
+          </div>
+          <%= render "properties/lastest_properties", properties: @agent_properties %>
+        </div>
+      </div>
+  </section>
   </aside>
 </div>

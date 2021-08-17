@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_111113) do
+ActiveRecord::Schema.define(version: 2021_08_17_181227) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "last_name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_111113) do
     t.string "password_digest"
     t.string "image"
     t.string "company"
+    t.string "telephone"
     t.index ["email"], name: "index_accounts_on_email", unique: true
   end
 
@@ -65,6 +66,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_111113) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parking_spaces", default: 0
     t.text "details"
+    t.boolean "for_sale", default: true
+    t.datetime "available_date"
     t.index ["account_id", "created_at"], name: "index_properties_on_account_id_and_created_at"
     t.index ["account_id"], name: "index_properties_on_account_id"
   end
